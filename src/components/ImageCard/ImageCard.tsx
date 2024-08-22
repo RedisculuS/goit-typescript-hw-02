@@ -1,17 +1,5 @@
 import css from "./ImageCard.module.css";
-
-type Image = {
-  id: string;
-  urls: {
-    small: string;
-    full: string;
-  };
-  description: string;
-  user: {
-    name: string;
-  };
-  likes: number;
-};
+import { Image } from "../App/App.types";
 
 type ImageCardProps = {
   image: Image;

@@ -8,28 +8,18 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { fetchImageWithSearch } from "../../searchImages-api";
 
 import { useState } from "react";
-
-type Image = {
-  id: string;
-  urls: {
-    small: string;
-    full: string;
-  };
-  description: string;
-  user: {
-    name: string;
-  };
-  likes: number;
-};
+import { Image, AppState } from "./App.types";
 
 function App() {
-  const [images, setImages] = useState<Image[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1);
-  const [topic, setTopic] = useState<string>("");
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+  const [images, setImages] = useState<AppState["images"]>([]);
+  const [loading, setLoading] = useState<AppState["loading"]>(false);
+  const [error, setError] = useState<AppState["error"]>(false);
+  const [page, setPage] = useState<AppState["page"]>(1);
+  const [topic, setTopic] = useState<AppState["topic"]>("");
+  const [modalIsOpen, setModalIsOpen] =
+    useState<AppState["modalIsOpen"]>(false);
+  const [selectedImage, setSelectedImage] =
+    useState<AppState["selectedImage"]>(null);
 
   const handleSearch = async (topic: string) => {
     setPage(1);
